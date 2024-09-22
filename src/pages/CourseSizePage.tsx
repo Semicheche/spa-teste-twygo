@@ -37,15 +37,8 @@ const CourseSizePage: React.FC = () => {
       <Box p={6} m={2} borderWidth={1} borderRadius="lg" boxShadow='lg'><Heading as="h6" size="md" >Qtd Cursos: {courses.lista.length}</Heading></Box>
       <Box p={6} m={2} borderWidth={1} borderRadius="lg" boxShadow='lg'>
       <Heading as="h6" size="md" >Tamanho Total Dos Crusos (GB)</Heading>
-      <List spacing={3}>
-        {courses?.lista.forEach((curso) => (
-          <ListItem key={curso.id}>
-            {curso.nome}
-          </ListItem>
-        ))}
-      </List>
-      <CircularProgress value={totalSize} size='400px' >
-        <CircularProgressLabel>{totalSize} GB</CircularProgressLabel>
+      <CircularProgress value={totalSize} size='250px' >
+        <CircularProgressLabel >{totalSize} GB</CircularProgressLabel>
       </CircularProgress>
       </Box>
      </Container>
