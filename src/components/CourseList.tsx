@@ -13,7 +13,6 @@ interface CourseListProps {
 }
 
 const CourseList: React.FC<CourseListProps> = ({ courses, onEdit, onDelete }) => {
-  console.log('=> ', courses)
   return (
     <>
       { courses.map((course) => (

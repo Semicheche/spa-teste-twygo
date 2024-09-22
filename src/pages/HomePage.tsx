@@ -35,7 +35,7 @@ const HomePage: React.FC<CourseListProps> = ({ fetchedCourses }) => {
   useEffect(() => {
     setStatus(false);
     const localCourses = JSON.parse(localStorage.getItem('courses'));
-    console.log(localCourses)
+ 
     if (localCourses === null || localCourses === undefined) {
       localStorage.setItem("courses", JSON.stringify(fetchedCourses));
     } 
@@ -59,17 +59,15 @@ const HomePage: React.FC<CourseListProps> = ({ fetchedCourses }) => {
    
     if (new Date(newCourse.endDate).getTime() >= new Date().getTime()) {
       if (!status) {
-        console.log('Add course ')
-        const id = fetchedCourses.length + 1;
+        const id = courses.map((c) => c.id).reduce((a, b) => Math.max(a, b)) + 1;
         setCourses([...courses, { ...newCourse, id }]);
-        localStorage.setItem("courses", JSON.stringify([...courses, { ...newCourse, id }]));
+        localStorage.setItem("courses", JSON.stringify([ ...courses, { ...newCourse, id }]));
       } else {
         const updatedCourses = courses.map(course => 
           course.id === newCourse.id ? newCourse : course
         );
         setCourses(updatedCourses);
         localStorage.setItem("courses", JSON.stringify(courses));
-      
       }
       onClose()
     } else {
@@ -90,6 +88,7 @@ const HomePage: React.FC<CourseListProps> = ({ fetchedCourses }) => {
 
   const handleDeleteCourse = (id: number) => {
     setCourses(courses.filter(course => course.id !== id));
+    localStorage.setItem("courses", JSON.stringify(courses.filter(course => course.id !== id)));
   };
   const handleButtonClick = () => {
     navigate('/course-size', { state: { lista: courses } });

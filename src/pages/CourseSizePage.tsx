@@ -4,12 +4,6 @@ import { CircularProgress, CircularProgressLabel } from '@chakra-ui/react'
 import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
-interface Course {
-  id: number;
-  title: string;
-  description: string;
-}
-
 const CourseSizePage: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -18,7 +12,7 @@ const CourseSizePage: React.FC = () => {
   const handleButtonClick = () => {
     navigate('/');
   };
-  console.log(courses)
+
   return (
     <Container p={4}>
       <Menu  variant='outline' >
@@ -36,7 +30,7 @@ const CourseSizePage: React.FC = () => {
       </Menu>
       <Box p={6} m={2} borderWidth={1} borderRadius="lg" boxShadow='lg'><Heading as="h6" size="md" >Qtd Cursos: {courses.lista.length}</Heading></Box>
       <Box p={6} m={2} borderWidth={1} borderRadius="lg" boxShadow='lg'>
-      <Heading as="h6" size="md" >Tamanho Total Dos Crusos (GB)</Heading>
+      <Heading as="h6" size="md" >Tamanho Total dos Cursos (GB)</Heading>
       <CircularProgress value={totalSize} size='250px' >
         <CircularProgressLabel >{totalSize} GB</CircularProgressLabel>
       </CircularProgress>
