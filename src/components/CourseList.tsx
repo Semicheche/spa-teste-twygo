@@ -1,5 +1,5 @@
 // src/components/CourseList.tsx
-import { 
+import {
   Box, 
   Heading, 
   Text,
@@ -13,8 +13,10 @@ interface CourseListProps {
 }
 
 const CourseList: React.FC<CourseListProps> = ({ courses, onEdit, onDelete }) => {
+  console.log('=> ', courses)
   return (
-      courses.map((course) => (
+    <>
+      { courses.map((course) => (
         <Box key={course.id} p={4} borderWidth={1} borderRadius="lg" boxShadow='lg'>
           <Heading as="h3" size="md">{course.title}</Heading>
           <Text>{course.description}</Text>
@@ -22,7 +24,8 @@ const CourseList: React.FC<CourseListProps> = ({ courses, onEdit, onDelete }) =>
           <Button onClick={() => onEdit(course)} colorScheme="blue" mr={2}>Editar</Button>
           <Button onClick={() => onDelete(course.id)} colorScheme="red">Excluir</Button>
         </Box>
-      ))
+      )) }
+    </>
   );
 };
 
